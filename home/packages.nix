@@ -17,6 +17,7 @@ in
       # core utils
       curl
       dig
+      flameshot
       dust
       eza
       fd

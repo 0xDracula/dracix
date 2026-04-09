@@ -13,11 +13,11 @@
   ];
   programs.plasma = {
     enable = true;
-    #shortcuts = {
-      #"services/org.flameshot.Flameshot.desktop" = {
-        #"Capture" = "Meta+Shift+S";
-      #};
-    #};
+    shortcuts = {
+      "services/org.flameshot.Flameshot.desktop" = {
+        "Capture" = "Meta+Shift+S";
+      };
+    };
 
     input = {
       touchpads = [

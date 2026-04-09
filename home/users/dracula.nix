@@ -37,6 +37,7 @@ in
   dotfiles.programs.nodejs.enable = true;
   dotfiles.programs.python.enable = true;
   dotfiles.programs.ruby.enable = true;
+  dotfiles.programs.rust.enable = true;
 
   # Dev Tools
   dotfiles.programs.bat.enable = true;
@@ -81,6 +82,6 @@ in
   dotfiles.programs.wine.enable = enableFor [ "loq" ];
   dotfiles.programs.zeal.enable = disableFor [ "thinkpad" ];
   dotfiles.programs.zen.enable = disableFor [ "thinkpad" ];
-
+  
   dotfiles.packages.enable = true;
 }

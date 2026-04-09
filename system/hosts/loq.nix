@@ -16,7 +16,6 @@
   dotfiles.modules.flatpak.enable = true;
   dotfiles.modules.plasma.enable = true;
   dotfiles.modules.kdenlive.enable = true;
-  dotfiles.modules.keybase.enable = true;
   dotfiles.modules.locale.enable = true;
   dotfiles.modules.networking.enable = true;
   dotfiles.modules.obs.enable = true;
@@ -28,4 +27,5 @@
   dotfiles.modules.virtualisation.enable = true;
   dotfiles.modules.vlc.enable = true;
   dotfiles.modules.nvidia.enable = true;
+  dotfiles.modules.steam.enable = true;
 }
