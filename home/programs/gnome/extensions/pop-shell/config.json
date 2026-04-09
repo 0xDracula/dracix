@@ -1,0 +1,41 @@
+{
+  "float": [
+    {
+      "class": "Ulauncher"
+    },
+    {
+      "class": "Walker"
+    },
+    {
+      "class": "Albert"
+    },
+    {
+      "class": "Slack",
+      "title": "Huddle: #general - Marmela - Slack 🎤"
+    },
+    {
+      "class": "Slack",
+      "title": "Huddle: core - Marmela - Slack 🎤"
+    },
+    {
+      "class": "Slack",
+      "title": "Huddle: @Luis - Marmela - Slack 🎤"
+    },
+    {
+      "class": "org.telegram.desktop",
+      "title": "Media viewer"
+    },
+    {
+      "class": "xdg-desktop-portal-gnome",
+      "title": "Share Screen"
+    },
+    {
+      "class": "org.fedoraproject.MediaWriter"
+    },
+    {
+      "class": "org.raspberrypi.rpi-imager"
+    }
+  ],
+  "skiptaskbarhidden": [],
+  "log_on_focus": false
+}

@@ -1,0 +1,52 @@
+#!/usr/bin/env nix-shell
+#! nix-shell -I nixpkgs=channel:nixos-25.05
+#! nix-shell -p nh gum python313 python313Packages.xonsh python313Packages.docopt
+#! nix-shell -i xonsh
+"""
+Rebuilds the system and home configuration.
+
+Usage:
+  {program} [os | home]
+  {program} (-h | --help)
+  {program} (-v | --version)
+
+Commands:
+  os                Rebuild only the NixOS system configuration.
+  home              Rebuild only the home-manager configuration.
+
+Options:
+  -h --help         Show this screen.
+  -v --version      Show version.
+"""
+import os
+
+from docopt import docopt
+
+os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+def rebuild_system():
+  #nixos-rebuild switch --flake .#loq
+  nh os switch .#loq
+
+def rebuild_home():
+  #home-manager switch --flake '.'
+  #home-manager switch --flake .#dracula@loq
+  nh home switch .#dracula@loq
+
+def main(args):
+    tasks = {
+        'os': rebuild_system,
+        'home': rebuild_home,
+    }
+
+    run_all = not any(args[task] for task in tasks)
+
+    for task, func in tasks.items():
+        if args[task] or run_all:
+            func()
+
+if __name__ == '__main__':
+    arguments = docopt(__doc__.format(program=__file__), version=f'{os.path.basename(__file__)} script version 1.0')
+    main(arguments)
+
+# vim: ft=xonsh

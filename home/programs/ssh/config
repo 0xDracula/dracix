@@ -1,0 +1,59 @@
+AddKeysToAgent  yes
+Compression yes
+
+# Host *
+#     IdentityAgent "~/.bitwarden-ssh-agent.sock"
+
+Host aur.archlinux.org
+  User aur
+
+Host github.com
+    HostName github.com
+
+Host dpworx.prod
+    HostName dpworx.de
+    User dpworx
+
+Host dpworx.stg
+    HostName staging.dpworx.de
+    User dpworx
+
+Host ha
+    HostName ha.local
+    Port 2222
+    User root
+
+Host plutus
+    HostName plutus.local
+
+Host plutus.estevao.org
+    ProxyCommand cloudflared access ssh --hostname %h
+
+Host hades
+    HostName hades.local
+
+Host hades.estevao.org
+    ProxyCommand cloudflared access ssh --hostname %h
+
+Host hades.marmela.org
+    ProxyCommand cloudflared access ssh --hostname %h
+
+Host pichu
+    HostName pichu.marmela.org
+    User root
+
+Host zubat
+    HostName zubat.marmela.org
+    User root
+
+Host epl
+    HostName epl.di.uminho.pt
+    User cesium
+
+Host stg-eeg
+    HostName stg-eegs.eeg.uminho.pt
+    User deployer
+
+Host prod-eeg
+    HostName eegs.eeg.uminho.pt
+    User deployer

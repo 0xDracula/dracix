@@ -1,0 +1,31 @@
+{
+  "buffer_font_family": "Adwaita Mono",
+  "vim_mode": true,
+  "project_panel": {
+    "default_width": 240,
+    "dock": "right",
+    "entry_spacing": "comfortable",
+    "file_icons": true,
+    "folder_icons": true,
+    "git_status": true,
+    "auto_reveal_entries": true,
+    "auto_fold_dirs": true,
+  },
+  "ui_font_size": 14,
+  "buffer_font_size": 18,
+  "buffer_font_features": {
+    "calt": false,
+  },
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font,JetBrainsMono NF,JetBrainsMono Nerd Font Mono,JetBrainsMono NFM",
+    "font_size": 18,
+  },
+  "languages": {
+    "C": { "format_on_save": "on" },
+  },
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+}

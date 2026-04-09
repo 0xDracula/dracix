@@ -1,0 +1,44 @@
+# --- Secrets / credentials ---
+*.pem
+*.key
+*.p12
+*.pfx
+*.kdbx
+*.age
+*.asc
+*.gpg
+*.secret
+.env
+.env.*
+!.env.example
+
+# SSH / GnuPG / cloud credentials (if ever copied into repo paths)
+**/.ssh/
+**/.gnupg/
+**/.aws/
+**/.config/gcloud/
+
+# direnv / env injection
+.envrc
+.direnv/
+
+# Nix local state / generated links
+result
+result-*
+.nix-profile
+.nix-defexpr
+.nix-channels
+
+# Home-manager / nix-darwin local backups or temp artifacts
+*.backup
+*.bak
+*.tmp
+*.swp
+*~
+
+# macOS
+.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/

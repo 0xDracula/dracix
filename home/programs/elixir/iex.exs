@@ -1,0 +1,86 @@
+timestamp = fn ->
+  {_date, {hour, minute, _second}} = :calendar.local_time()
+
+  [hour, minute]
+  |> Enum.map(&String.pad_leading(Integer.to_string(&1), 2, "0"))
+  |> Enum.join(":")
+end
+
+elixir_icon = fn ->
+  "#{IO.ANSI.magenta()}#{IO.ANSI.reset()}"
+end
+
+format_env = fn
+  :dev -> "#{IO.ANSI.green()}dev#{IO.ANSI.reset()}"
+  :prod -> "#{IO.ANSI.red()}prod#{IO.ANSI.reset()}"
+  :test -> "#{IO.ANSI.cyan()}test#{IO.ANSI.reset()}"
+end
+
+prefix =
+  if Process.whereis(Mix.State) do
+    "#{IO.ANSI.light_blue()}#{Mix.Project.config()[:app]}#{IO.ANSI.reset()} (#{format_env.(Mix.env())}) "
+  else
+    "#{IO.ANSI.green()}%prefix#{IO.ANSI.reset()} "
+  end
+
+IEx.configure(
+  colors: [
+    syntax_colors: [
+      number: :light_yellow,
+      atom: :light_cyan,
+      string: :light_green,
+      boolean: :red,
+      nil: [:magenta, :bright]
+    ],
+    ls_directory: :cyan,
+    ls_device: :yellow,
+    doc_code: :green,
+    doc_inline_code: :magenta,
+    doc_headings: [:cyan, :underline],
+    doc_title: [:cyan, :bright, :underline]
+  ],
+  default_prompt:
+    "#{prefix}" <>
+      "[#{IO.ANSI.magenta()}#{timestamp.()}#{IO.ANSI.reset()} " <>
+      "#{IO.ANSI.cyan()}%counter#{IO.ANSI.reset()}] #{elixir_icon.()}",
+  alive_prompt:
+    "#{prefix}" <>
+      "(#{IO.ANSI.yellow()}%node#{IO.ANSI.reset()}) " <>
+      "[#{IO.ANSI.magenta()}#{timestamp.()}#{IO.ANSI.reset()} " <>
+      "#{IO.ANSI.cyan()}%counter#{IO.ANSI.reset()}] #{elixir_icon.()}",
+  history_size: 50,
+  inspect: [
+    pretty: true,
+    limit: :infinity,
+    width: 80,
+    custom_options: [sort_maps: true]
+  ],
+  width: 80
+)
+
+defmodule :_utils do
+  def format, do: Mix.Tasks.Format.run([])
+  def copy(term) do
+    text = if is_binary(term), do: term, else: inspect(term, limit: :infinity, pretty: true)
+
+    port = Port.open({:spawn, "wl-copy"}, [])
+    true = Port.command(port, text)
+    true = Port.close(port)
+
+    :ok
+  end
+
+  defdelegate f, to: __MODULE__, as: :format
+  defdelegate q, to: __MODULE__, as: :quit
+
+  defdelegate bye(), to: System, as: :halt
+  defdelegate exit(), to: System, as: :halt
+  defdelegate quit(), to: System, as: :halt
+end
+
+import :_utils
+
+if function_exported?(Mix, :__info__, 1) and Mix.State in :ets.all() and Mix.env() == :dev do
+  # if statement guards you from running it in prod, which could result in loss of logs.
+  Logger.configure_backend(:console, device: Process.group_leader())
+end

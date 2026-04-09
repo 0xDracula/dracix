@@ -1,0 +1,87 @@
+[user]
+	name = Abdallah Ebrahim
+  useConfigOnly = true
+	signingkey = /home/dracula/.ssh/id_ed25519_signing.pub
+	email = abdallah.ebrahim.official@gmail.com
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /home/dracula/.ssh/allowed_signers
+[commit]
+	gpgsign = true
+  verbose = true
+  template = ~/.dotfiles/home/programs/git/git-commit-msg-template
+[tag]
+  gpgsign = true
+[include]
+    path = ~/.dotfiles/home/programs/git/personal.config
+[includeIf "gitdir:~/Code/UMinho/"]
+    path = ~/.dotfiles/home/programs/git/uminho.config
+[includeIf "gitdir:~/Code/Marmela/"]
+    path = ~/.dotfiles/home/programs/git/marmela.config
+[core]
+  autocrlf = input
+  editor = nvim
+  excludesfile = ~/.dotfiles/home/programs/git/gitignore
+  attributesfile = ~/.dotfiles/home/programs/git/gitattributes
+  pager = delta
+[init]
+  defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  light = false
+  features = decorations
+  whitespace-error-style = 22 reverse
+[alias]
+  a = add
+  b = branch
+  c = commit
+  cl = clone
+  co = checkout
+  h = history
+  l = pull
+  p = push
+  fz = fuzzy
+  ht = history
+  rb = rebase
+  rw = review
+  st = status
+
+  undo = reset --mixed HEAD~1
+  co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
+  find = log --pretty=format:'%C(yellow)%h %Cblue%ad %Creset%s' --decorate --date=short --all -S
+  patch   = !git --no-pager diff
+  standup = !git log --oneline --graph --all --no-merges --author=$USER --since '9am last week'
+[branch]
+  autosetuprebase = always
+[log]
+  date = auto:human
+[diff]
+  algorithm = histogram
+  renames = copies
+  mnemonicPrefix = true
+[merge]
+  log = true
+  # tool = nvimdiff
+  conflictstyle = zdiff3
+  algorithm = histogram
+[fetch]
+  prune = true
+[push]
+  default = simple
+  autoSetupRemote = true
+[pull]
+  rebase = true
+[color]
+  ui = true
+[url "git@github.com:0xDracula/"]
+  insteadOf = gh:
+[url "git@github.com:"]
+  insteadOf = ghx:
+[url "git@gitlab.com:0xDracula/"]
+  insteadOf = gl:
+[url "git@gitlab.com:"]
+  insteadOf = glx:
+[url "git@bitbucket.org:"]
+  insteadOf = https://bitbucket.org/
