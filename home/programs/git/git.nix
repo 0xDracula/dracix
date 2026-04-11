@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkHomeSymlink,
   ...
 }:
 {
@@ -26,5 +26,7 @@
     eval $(${pkgs.gitleaks}/bin/gitleaks completion zsh)
   '';
 
-  home.file.".gitconfig" = mkSymlink "gitconfig";
+  # Git prefers ~/.gitconfig as the global config if it exists. We keep managing
+  # ~/.gitconfig, but allow profiles to override it via profile `.config/git/config`.
+  home.file.".gitconfig" = mkHomeSymlink ".config/git/config" "gitconfig";
 }

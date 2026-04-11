@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkHomeSymlink,
   ...
 }:
 {
@@ -10,5 +10,5 @@
     texliveFull
   ];
 
-  home.file.".latexmkrc" = mkSymlink "latexmkrc";
+  home.file.".latexmkrc" = mkHomeSymlink ".latexmkrc" "latexmkrc";
 }

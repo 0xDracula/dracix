@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -10,6 +10,6 @@
     espanso-wayland
   ];
 
-  xdg.configFile."espanso/config" = mkSymlink "config";
-  xdg.configFile."espanso/match" = mkSymlink "match";
+  xdg.configFile."espanso/config" = mkXdgSymlink "espanso/config" "config";
+  xdg.configFile."espanso/match" = mkXdgSymlink "espanso/match" "match";
 }

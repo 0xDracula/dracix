@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkHomeSymlink,
   ...
 }:
 {
@@ -51,8 +51,8 @@
     export PATH="$HOME/.mix/escripts:$PATH";
   '';
 
-  home.file.".iex.exs" = mkSymlink "iex.exs";
+  home.file.".iex.exs" = mkHomeSymlink ".iex.exs" "iex.exs";
   home.file.".default-mix-commands" = lib.mkIf config.dotfiles.programs.mise.enable (
-    mkSymlink "default-mix-commands"
+    mkHomeSymlink ".default-mix-commands" "default-mix-commands"
   );
 }

@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -21,11 +21,11 @@
     Comment=Keyboard launcher
   '';
 
-  xdg.configFile."ulauncher/settings.json" = mkSymlink "settings.json";
-  xdg.configFile."ulauncher/extensions.json" = mkSymlink "extensions.json";
-  xdg.configFile."ulauncher/shortcuts.json" = mkSymlink "shortcuts.json";
+  xdg.configFile."ulauncher/settings.json" = mkXdgSymlink "ulauncher/settings.json" "settings.json";
+  xdg.configFile."ulauncher/extensions.json" = mkXdgSymlink "ulauncher/extensions.json" "extensions.json";
+  xdg.configFile."ulauncher/shortcuts.json" = mkXdgSymlink "ulauncher/shortcuts.json" "shortcuts.json";
 
-  xdg.configFile."ulauncher/user-themes" = mkSymlink "themes";
+  xdg.configFile."ulauncher/user-themes" = mkXdgSymlink "ulauncher/user-themes" "themes";
 
   dconf.settings = lib.mkIf config.dotfiles.programs.gnome.enable {
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {

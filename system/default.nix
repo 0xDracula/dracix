@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   hostname,
   users,
   ...
@@ -35,6 +36,7 @@
 
   # ── Extra Packages ────────────────────────────────────────────────────
   environment.systemPackages = with pkgs; [
+    pkgs.unstable.ollama-cuda
   ];
 
   # ──────────────────────────────────────────────────────────────────────

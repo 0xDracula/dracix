@@ -21,9 +21,7 @@
 
   networking.firewall.enable = true;
 
-  # Allow access to localsend
-  networking.firewall.allowedTCPPorts = [ 53317 ];
-  networking.firewall.allowedUDPPorts = [ 53317 ];
+  networking.firewall.trustedInterfaces = [ "wlp9s0" ];
 
   environment.systemPackages = with pkgs; [
     networkmanager-openconnect

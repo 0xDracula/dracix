@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -10,5 +10,5 @@
     restic
   ];
 
-  xdg.configFile."restic/exclude.txt" = mkSymlink "exclude.txt";
+  xdg.configFile."restic/exclude.txt" = mkXdgSymlink "restic/exclude.txt" "exclude.txt";
 }

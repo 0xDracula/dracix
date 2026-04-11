@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkHomeSymlink,
   ...
 }:
 {
@@ -12,5 +12,5 @@
   ];
 
   # ── Symlinked Config Files ───────────────────────────────────────────
-  home.file.".claude/skills" = mkSymlink "skills";
+  home.file.".claude/skills" = mkHomeSymlink ".claude/skills" "skills";
 }

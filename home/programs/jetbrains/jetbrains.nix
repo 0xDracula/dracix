@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkHomeSymlink,
   ...
 }:
 {
@@ -10,5 +10,5 @@
     jetbrains.datagrip
   ];
 
-  home.file.".ideavimrc" = mkSymlink "ideavimrc";
+  home.file.".ideavimrc" = mkHomeSymlink ".ideavimrc" "ideavimrc";
 }

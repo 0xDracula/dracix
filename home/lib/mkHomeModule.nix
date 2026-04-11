@@ -10,9 +10,28 @@ let
   mkSymlink =
     relativePath:
     config.lib.dotfiles.mkSymlinkFrom "${config.home.homeDirectory}/.dotfiles/home/programs/${name}" relativePath;
+
+  mkXdgSymlink =
+    targetRelativeToConfigHome: relativeProgramPath:
+    config.lib.dotfiles.mkPreferProfilePath ".config/${targetRelativeToConfigHome}" (mkSymlink relativeProgramPath);
+
+  mkHomeSymlink =
+    targetRelativeToHome: relativeProgramPath:
+    config.lib.dotfiles.mkPreferProfilePath "${targetRelativeToHome}" (mkSymlink relativeProgramPath);
 in
 {
   options.dotfiles.programs.${name}.enable = lib.mkEnableOption "Enable ${name} configuration.";
 
-  config = lib.mkIf config.dotfiles.programs.${name}.enable (body (args // { inherit mkSymlink; }));
+  config = lib.mkIf config.dotfiles.programs.${name}.enable (
+    body (
+      args
+      // {
+        inherit
+          mkSymlink
+          mkXdgSymlink
+          mkHomeSymlink
+          ;
+      }
+    )
+  );
 }

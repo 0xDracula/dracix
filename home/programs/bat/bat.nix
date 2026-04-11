@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -10,7 +10,7 @@
     bat
   ];
 
-  xdg.configFile."bat/config" = mkSymlink "config";
+  xdg.configFile."bat/config" = mkXdgSymlink "bat/config" "config";
 
   programs.zsh.envExtra = lib.mkIf config.dotfiles.programs.zsh.enable ''
     get_bat_theme() {

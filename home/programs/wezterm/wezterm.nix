@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -10,5 +10,5 @@
     wezterm
   ];
 
-  xdg.configFile."wezterm/wezterm.lua" = mkSymlink "wezterm.lua";
+  xdg.configFile."wezterm/wezterm.lua" = mkXdgSymlink "wezterm/wezterm.lua" "wezterm.lua";
 }

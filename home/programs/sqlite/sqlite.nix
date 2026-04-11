@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkHomeSymlink,
   ...
 }:
 {
@@ -10,5 +10,5 @@
     sqlite
   ];
 
-  home.file.".sqliterc" = mkSymlink "sqliterc";
+  home.file.".sqliterc" = mkHomeSymlink ".sqliterc" "sqliterc";
 }

@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -15,5 +15,5 @@
     MANPAGER = "nvim +Man!";
   };
 
-  xdg.configFile."nvim/init.lua" = mkSymlink "init.lua";
+  xdg.configFile."nvim/init.lua" = mkXdgSymlink "nvim/init.lua" "init.lua";
 }

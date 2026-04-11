@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -10,9 +10,9 @@
     ghostty
   ];
 
-  xdg.configFile."ghostty/config" = mkSymlink "config";
-  xdg.configFile."ghostty/themes/Day" = mkSymlink "themes/Day";
-  xdg.configFile."ghostty/themes/Night" = mkSymlink "themes/Night";
+  xdg.configFile."ghostty/config" = mkXdgSymlink "ghostty/config" "config";
+  xdg.configFile."ghostty/themes/Day" = mkXdgSymlink "ghostty/themes/Day" "themes/Day";
+  xdg.configFile."ghostty/themes/Night" = mkXdgSymlink "ghostty/themes/Night" "themes/Night";
 
   dconf.settings = lib.mkIf config.dotfiles.programs.gnome.enable {
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {

@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -34,10 +39,11 @@
       zen-browser,
       claude-code,
       plasma-manager,
+      quickshell,
     }:
     let
       lib = nixpkgs.lib;
-      mkNixosConfig = import ./lib/mkNixosConfig.nix { inherit nixpkgs; };
+      mkNixosConfig = import ./lib/mkNixosConfig.nix { inherit nixpkgs nixpkgs-unstable; };
       mkHomeConfig = import ./lib/mkHomeConfig.nix { inherit nixpkgs home-manager plasma-manager; };
 
       # ── Hosts ────────────────────────────────────────────────────────────
@@ -69,6 +75,7 @@
                 config.allowUnfree = true;
               };
             })
+            (final: prev: { quickshell = quickshell.packages.${prev.stdenv.hostPlatform.system}.default; })
           ];
           extraSpecialArgs = { };
         };

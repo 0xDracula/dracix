@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 with lib.hm.gvariant;
@@ -54,7 +54,7 @@ in
     );
   };
 
-  xdg.configFile."pop-shell/config.json" = mkSymlink "extensions/pop-shell/config.json";
+  xdg.configFile."pop-shell/config.json" = mkXdgSymlink "pop-shell/config.json" "extensions/pop-shell/config.json";
 
   # xdg.configFile."autostart/albert.desktop".text = ''
   #   [Desktop Entry]

@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkHomeSymlink,
   ...
 }:
 {
@@ -40,5 +40,5 @@
     export LD_LIBRARY_PATH="${pkgs.freeglut}/lib:${pkgs.libGL}/lib:$LD_LIBRARY_PATH"
   '';
 
-  home.file.".ghci" = mkSymlink "ghci";
+  home.file.".ghci" = mkHomeSymlink ".ghci" "ghci";
 }

@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -16,5 +16,5 @@
     KERL_INSTALL_MANPAGES = "yes";
   };
 
-  xdg.configFile."rebar/rebar.config" = mkSymlink "rebar.config";
+  xdg.configFile."rebar/rebar.config" = mkXdgSymlink "rebar/rebar.config" "rebar.config";
 }

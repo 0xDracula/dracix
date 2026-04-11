@@ -12,8 +12,8 @@ in
 {
   # Desktop Environment
   dotfiles.programs.plasma.enable = enableFor [ "loq" ];
-  dotfiles.programs.hyprland.enable = false;
-
+  #dotfiles.programs.hyprland.enable = true;
+  #dotfiles.profiles."end-4".enable = true;
   # Shells
   dotfiles.programs.zsh.enable = true;
 

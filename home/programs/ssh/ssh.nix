@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkHomeSymlink,
   ...
 }:
 {
@@ -10,5 +10,5 @@
     openssh
   ];
 
-  home.file.".ssh/config" = mkSymlink "config";
+  home.file.".ssh/config" = mkHomeSymlink ".ssh/config" "config";
 }

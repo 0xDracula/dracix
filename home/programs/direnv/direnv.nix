@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -10,5 +10,5 @@
     direnv
   ];
 
-  xdg.configFile."direnv/direnvrc" = mkSymlink "direnvrc";
+  xdg.configFile."direnv/direnvrc" = mkXdgSymlink "direnv/direnvrc" "direnvrc";
 }

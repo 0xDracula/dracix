@@ -1,4 +1,4 @@
-{ nixpkgs }:
+{ nixpkgs, nixpkgs-unstable }:
 hostname: cfg:
 let
   lib = nixpkgs.lib;
@@ -15,6 +15,16 @@ nixpkgs.lib.nixosSystem {
   };
   modules = [
     ../system
+    ({ pkgs, ... }: {
+      nixpkgs.overlays = [
+        (final: prev: {
+          unstable = import nixpkgs-unstable {
+            system = prev.stdenv.hostPlatform.system;
+            config.allowUnfree = true;
+          };
+        })
+      ];
+    })
   ]
   ++ systemModules;
 }

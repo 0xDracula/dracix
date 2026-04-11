@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -22,5 +22,5 @@
     waybar
   ];
 
-  xdg.configFile."hypr/hyprland.conf" = mkSymlink "hyprland.conf";
+  xdg.configFile."hypr/hyprland.conf" = mkXdgSymlink "hypr/hyprland.conf" "hyprland.conf";
 }

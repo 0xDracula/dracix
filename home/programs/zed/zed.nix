@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -10,5 +10,5 @@
     zed-editor
   ];
 
-  xdg.configFile."zed/settings.json" = mkSymlink "./settings.json";
+  xdg.configFile."zed/settings.json" = mkXdgSymlink "zed/settings.json" "./settings.json";
 }

@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkHomeSymlink,
   ...
 }:
 {
@@ -11,8 +11,8 @@
     rubyfmt
   ];
 
-  home.file.".irbrc" = mkSymlink "irbrc";
+  home.file.".irbrc" = mkHomeSymlink ".irbrc" "irbrc";
   home.file.".default-gems" = lib.mkIf config.dotfiles.programs.mise.enable (
-    mkSymlink "default-gems"
+    mkHomeSymlink ".default-gems" "default-gems"
   );
 }

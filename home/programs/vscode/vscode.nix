@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  mkSymlink,
+  mkXdgSymlink,
   ...
 }:
 {
@@ -10,6 +10,6 @@
     pkgs.unstable.vscode
   ];
 
-  xdg.configFile."Code/User/settings.json" = mkSymlink "settings.json";
-  xdg.configFile."Code/User/keybindings.json" = mkSymlink "keybindings.json";
+  xdg.configFile."Code/User/settings.json" = mkXdgSymlink "Code/User/settings.json" "settings.json";
+  xdg.configFile."Code/User/keybindings.json" = mkXdgSymlink "Code/User/keybindings.json" "keybindings.json";
 }
